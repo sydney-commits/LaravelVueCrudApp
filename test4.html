@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS for the QR code container */
+    .qr-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* CSS for the download button */
+    .download-button {
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>QR Code Generator</h1>
+
+  <!-- QR code container -->
+  <div class="qr-container">
+    <canvas id="qr-canvas"></canvas>
+    <br>
+    <button class="download-button" onclick="downloadQR()">Download QR Code</button>
+  </div>
+
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    function generateQRCode() {
+      // Get the text to encode as a QR code
+      var text = "Example text"; // Replace with your desired text
+
+      // Create a new QRCode instance
+      var qrcode = new QRCode(document.getElementById("qr-canvas"), {
+        text: text,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      // Display the QR code on the canvas
+      qrcode.makeCode(text);
+    }
+
+    function downloadQR() {
+      // Convert the canvas to an image
+      var canvas = document.getElementById("qr-canvas");
+      var dataURL = canvas.toDataURL("image/png");
+
+      // Create a temporary link element
+      var link = document.createElement("a");
+      link.download = "qrcode.png";
+      link.href = dataURL;
+      link.style.display = "none";
+
+      // Simulate a click event to trigger the download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Generate the QR code on page load
+    generateQRCode();
+  </script>
+</body>
+</html>

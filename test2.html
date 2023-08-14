@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation Movie</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    #animation-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #road {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 5px;
+      background-color: #333;
+    }
+
+    #grass-left,
+    #grass-right {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 10%;
+      background-color: green;
+    }
+
+    #grass-left {
+      left: 0;
+    }
+
+    #grass-right {
+      right: 0;
+    }
+
+    #dog,
+    #cat {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="animation-container">
+    <div id="road"></div>
+    <div id="grass-left"></div>
+    <div id="grass-right"></div>
+    <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Dog" id="dog">
+    <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Cat" id="cat">
+    <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Cat" id="cat">
+    <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Cat" id="cat">
+    <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Cat" id="cat">
+    <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Cat" id="cat">
+
+  </div>
+
+  <script>
+    const dog = document.getElementById('dog');
+    const cat = document.getElementById('cat');
+    const animationContainer = document.getElementById('animation-container');
+
+    let dogPosition = -200;
+    let catPosition = -100;
+    const dogSpeed = 3;
+    const catSpeed = 2;
+
+    function animate() {
+      dogPosition += dogSpeed;
+      catPosition += catSpeed;
+      dog.style.left = dogPosition + 'px';
+      cat.style.left = catPosition + 'px';
+
+      if (dogPosition > animationContainer.offsetWidth) {
+        dogPosition = -200;
+        catPosition = -100;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

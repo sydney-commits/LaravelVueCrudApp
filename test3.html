@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation Race</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    #animation-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #track {
+      position: relative;
+      width: 90%;
+      height: 400px;
+      background-color: #999;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #grass-left,
+    #grass-right {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 5%;
+      background-color: #77b359;
+      z-index: -1;
+    }
+
+    #grass-left {
+      left: 0;
+    }
+
+    #grass-right {
+      right: 0;
+    }
+
+    .animal {
+      position: absolute;
+      top: calc(50% - 50px);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    #dog {
+      left: -200px;
+    }
+
+    #cat {
+      left: -300px;
+    }
+
+    #rabbit {
+      left: -400px;
+    }
+
+    #finish-line {
+      position: absolute;
+      top: calc(50% - 30px);
+      right: 0;
+      width: 5px;
+      height: 60px;
+      background-color: red;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="animation-container">
+    <div id="track">
+      <div id="grass-left"></div>
+      <div id="grass-right"></div>
+      <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Dog" id="dog" class="animal">
+      <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Cat" id="cat" class="animal">
+      <img src="https://media.tenor.com/ayW7x9oAjncAAAAj/after-effects-running.gif" alt="Rabbit" id="rabbit" class="animal">
+      <div id="finish-line"></div>
+    </div>
+  </div>
+
+  <script>
+    const animals = document.getElementsByClassName('animal');
+    const track = document.getElementById('track');
+    const finishLine = document.getElementById('finish-line');
+
+    const speeds = [3, 2.5, 3.5];
+    const positions = [-200, -300, -400];
+    const animalNames = ['Dog', 'Cat', 'Rabbit'];
+
+    for (let i = 0; i < animals.length; i++) {
+      const animal = animals[i];
+      animal.style.left = positions[i] + 'px';
+      animal.alt = animalNames[i];
+    }
+
+    function animate() {
+      let isWinner = false;
+
+      for (let i = 0; i < animals.length; i++) {
+        const animal = animals[i];
+        positions[i] += speeds[i];
+
+        if (positions[i] > track.offsetWidth) {
+          isWinner = true;
+          break;
+        }
+
+        animal.style.left = positions[i] + 'px';
+      }
+
+      if (isWinner) {
+        finishLine.style.backgroundColor = 'green';
+        alert(animals[positions.indexOf(Math.max(...positions))].alt + ' wins the race!');
+        resetPositions();
+      } else {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    function resetPositions() {
+      for (let i = 0; i < animals.length; i++) {
+        positions[i] = -200 * (i + 1);
+        animals[i].style.left = positions[i] + 'px';
+      }
+
+      finishLine.style.backgroundColor = 'red';
+      setTimeout(animate, 2000);
+    }
+
+    setTimeout(animate, 2000);
+  </script>
+</body>
+</html>

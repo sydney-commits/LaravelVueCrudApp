@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS for the body element */
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
+
+    /* CSS for the container */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    /* CSS for the heading */
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    /* CSS for the text */
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    /* CSS for the button */
+    .button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+
+      .container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      /* CSS for the cat and dog GIFs */
+      .cat, .dog {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+      }
+
+      /* CSS for the keyframes animations */
+      @keyframes chase-cat {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(900px); }
+        100% { transform: translateX(0); }
+      }
+
+      @keyframes chase-dog {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(200px); }
+        100% { transform: translateX(0); }
+      }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="container pt-10">
+        <img class="cat" src="a.gif" alt="Cat">
+        <img class="dog" src="b.gif" alt="Dog">
+      </div>
+
+{% comment %}
+    <h1>Welcome to Our Website</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius consectetur ultrices. Fusce facilisis, mauris a consectetur dapibus, tellus ex sollicitudin lorem.</p>
+    <a class="button" href="#">Learn More</a> {% endcomment %}
+  </div>
+
+  <script>
+    // JavaScript for animating the cat and dog
+    const cat = document.querySelector('.cat');
+    const dog = document.querySelector('.dog');
+
+    function animateChase() {
+        cat.style.animation = 'chase-cat 4s infinite';
+        cat.style.animationTimingFunction = 'linear';
+
+        dog.style.animation = 'chase-dog 3s infinite';
+        dog.style.animationTimingFunction = 'linear';
+      }
+
+    animateChase();
+  </script>
+</body>
+</html>
